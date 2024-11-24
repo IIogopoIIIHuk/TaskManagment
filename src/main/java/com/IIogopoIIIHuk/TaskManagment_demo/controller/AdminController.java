@@ -5,8 +5,8 @@ import com.IIogopoIIIHuk.TaskManagment_demo.entity.Task;
 import com.IIogopoIIIHuk.TaskManagment_demo.repo.TaskRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +16,14 @@ import java.util.List;
 @Slf4j
 @Tag(name = "admin-methods")
 @RequestMapping("/api/admin/task")
-@RequiredArgsConstructor
 public class AdminController {
 
     private final TaskRepository taskRepository;
+
+    @Autowired
+    public AdminController(TaskRepository taskRepository){
+        this.taskRepository = taskRepository;
+    }
 
     //Post Requests
     @Operation(

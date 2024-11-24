@@ -1,6 +1,7 @@
 package com.IIogopoIIIHuk.TaskManagment_demo.config;
 
 import com.IIogopoIIIHuk.TaskManagment_demo.service.UserService;
+import com.IIogopoIIIHuk.TaskManagment_demo.utils.JwtTokenUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -29,6 +30,12 @@ public class SecurityConfig {
     public SecurityConfig(@Lazy UserService userService, JwtRequestFilter jwtRequestFilter){
         this.userService = userService;
         this.jwtRequestFilter = jwtRequestFilter;
+    }
+
+
+    @Bean
+    public JwtTokenUtils jwtTokenUtils(){
+        return new JwtTokenUtils();
     }
 
 
